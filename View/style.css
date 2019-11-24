@@ -1,0 +1,15 @@
+.modal-backdrop {
+    background-color: #ffffff ;
+ }
+
+ .modal-content {
+     background-color: peru!important;
+ }
+
+ .dataTables_filter {
+    display: none;
+ }
+
+ .dataTables_filter input {
+    background: blue !important;
+}
