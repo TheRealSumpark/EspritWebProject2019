@@ -1,9 +1,9 @@
 <?php
 
 
-use Addons\PHPMailer\PHPMailer\PHPMailer;
-use Addons\PHPMailer\PHPMailer\Exception;
-use Addons\PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
 require '../Addons/PHPMailer/src/Exception.php';
 require '../Addons/PHPMailer/src/PHPMailer.php';
@@ -31,32 +31,30 @@ if (!empty($_POST['Mail_Body']) && !empty($_POST['Mail_Title']))
 
 
    
-    $sql='select Email from Client where Newsletter=1';
+    $sql='select Email from client where Newsletter=1';
     $db=config::getConnexion();
     try{ 
         $Array=$db->query($sql);
-       
+       print_r($Array);
     }
     catch(Exception $e)
     {
       die ($e->getMessage());
     }
-    $mail->setFrom('gmail@gmail.com');
     
-
+    
+    $mail->setFrom('gmail@gmail.com');
     foreach ($Array as $row)
    { //Recipients
-     
+   
      $mail->addAddress($row['Email']); 
+     
      var_dump($row['Email']);
     
 if(!$mail->Send()) {
     $error = 'Mail error: '.$mail->ErrorInfo;
-    return false;
-} else {
-    $error = 'Message sent!';
-    return true;
-}
+     
+} 
 }
 }
 
