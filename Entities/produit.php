@@ -1,81 +1,35 @@
 <?php
-class produit
-{
-	private $idpdt;
+class Produit{
+	private $referance;
 	private $nom;
 	private $prix;
-	private $idcat;
+	private $code_barre;
 	private $categorie;
-	private $image;
-
-		public function __construct($idpdt,$nom,$prix,$idcat,$categorie,$image)
-		{
-			$this->idpdt=$idpdt;
-			$this->nom=$nom;
-			$this->prix=$prix;
-			$this->idcat=$idcat;
-			$this->categorie=$categorie;
-			$this->image=$image;
-		}
-
-		public function get_idpdt()
-		{
-			return $this->idpdt;
-		}
-
-		public function set_idpdt($idpdt)
-		{
-			$this->idpdt = $idpdt;
-		}
-
-		public function get_nom()
-		{
-			return $this->nom;
-		}
-
-		public function set_nom($nom)
-		{
-			$this->nom = $nom;
-		}
-
-		public function get_prix()
-		{
-			return $this->prix;
-		}
-
-		public function set_prix($prix)
-		{
-			$this->prix = $prix;
-		}
-
-		public function get_idcat()
-		{
-			return $this->idcat;
-		}
-
-		public function set_idcat($idcat)
-		{
-			$this->idcat = $idcat;
-		}
-
-		public function get_categorie()
-		{
-			return $this->categorie;
-		}
-
-		public function set_categorie($categorie)
-		{
-			$this->categorie = $categorie;
-		}
-
-		public function get_image()
-		{
-			return $this->image; 
-		}
-
-		public function set_image($image)
-		{
-			$this->image = $image;
-		}
-}	
-?>
+	private $quantite;
+	private $img;
+	public function __construct($referance,$nom,$prix,$code_barre,$categorie,$quantite,$img)/*on peur avoir q'un sel constructeur*/ 
+	{
+		$this->referance=$referance;
+        $this->nom=$nom;
+	    $this->prix=$prix;
+	    $this->code_barre=$code_barre;
+        $this->categorie=$categorie;
+        $this->quantite=$quantite;
+        $this->img=$img;
+	}
+	public function getRef(){return $this->referance ;}
+	public function getNom(){return $this->nom ;}
+	public function getPrix(){return $this->prix ;}
+	public function getCode(){return $this->code_barre ;}
+	public function getCat(){return $this->categorie ;}
+	public function getImg(){return $this->img ;}
+	public function getQuant(){return $this->quantite ;}
+	public function setRef($referance){$this->referance=$referance;}
+	public function setNom($nom){$this->nom=$nom;}
+	public function setPrix($prix){$this->prix=$prix;}
+	public function setCode($code_barre){$this->code_barre=$code_barre;}
+	public function setCat($categorie){$this->categorie=$categorie;}
+		public function setQuant($quantite){$this->quantite=$quantite;}
+		public function setImg($img){$this->img=$img;}
+	}
+	?>
