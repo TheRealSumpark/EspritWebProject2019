@@ -4,11 +4,11 @@
 
 include '../core/EmployeC.PHP';
 
- 
 
 
-$EmployeC=new EmployeC();
-$Liste_Employes =$EmployeC->Afficher_Employe();
+
+$EmployeC = new EmployeC();
+$Liste_Employes = $EmployeC->Afficher_Employe();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,30 +22,30 @@ $Liste_Employes =$EmployeC->Afficher_Employe();
     Table
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  
-  
-   <!--JQuery FOR DATA TABLES-->
+
+
+  <!--JQuery FOR DATA TABLES-->
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
   <!--     Fonts and icons     -->
-  
-<link  rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"/>
-<link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"/>
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
-  
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-   <link href="../assets/demo/demo.css" rel="stylesheet" />
-   <!--My CSS JS -->
- 
-   <link rel="stylesheet" type="text/css" href="../View/style.css"/>
-   <script language="javascript" type="text/javascript" src="../Core/Test.js"></script>
-    <!-- CSS   FOR DATA TABLES-->
 
-  </head>
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <!--My CSS JS -->
+
+  <link rel="stylesheet" type="text/css" href="../View/style.css" />
+  <script language="javascript" type="text/javascript" src="../Core/Test.js"></script>
+  <!-- CSS   FOR DATA TABLES-->
+
+</head>
 
 <body class="dark-edition">
   <div class="wrapper ">
@@ -172,20 +172,20 @@ $Liste_Employes =$EmployeC->Afficher_Employe();
         </div>
       </nav>
       <!-- End Navbar -->
-    <div class="content">
+      <div class="content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title ">Liste Des Employes</h4>
-                  <div class="form-group">  <input type="text" id="Searchbox" placeholder="Search"> </div>
+                  <div class="form-group"> <input type="text" id="Searchbox" placeholder="Search"> </div>
                 </div>
-                 
+
                 <div class="card-body">
-               
+
                   <div class="table-responsive ">
-                    <table class="table table-striped " id="mydatatable" >
+                    <table class="table table-striped " id="mydatatable">
                       <thead class=" text-primary">
                         <th>
                           Cin
@@ -196,316 +196,244 @@ $Liste_Employes =$EmployeC->Afficher_Employe();
                         <th>
                           Prenom
                         </th>
-                        
+
                         <th>
                           Salaire
                         </th>
                         <th>
-                          
-                        <button type="button" class="btn btn-default btn-sm " aria-label="Left Align" data-toggle="modal" data-target="#Ajouter_Modal">
-                          <i class="fa fa-plus"></i>
-</button>
- 
+
+                          <button type="button" class="btn btn-default btn-sm " aria-label="Left Align" data-toggle="modal" data-target="#Ajouter_Modal">
+                            <i class="fa fa-plus"></i>
+                          </button>
+
                         </th>
 
-                        
+
                       </thead>
                       <tbody>
-                        
-                        <?php 
-                        foreach ($Liste_Employes as $row)
-                          {?>
-                          
+
+                        <?php
+                        foreach ($Liste_Employes as $row) { ?>
+
                           <tr>
-                          <td>
-                            <?php echo $row['Cin']  ?>  
-                          </td>
-                          <td>
-                          <?php echo $row['Nom'] ?>
-                          </td>
-                          <td>
-                          <?php echo $row['Prenom'] ?>
-                          </td>
-                          
-                          <td class="text-primary">
-                          <?php echo $row['Salaire'] .' dt' ?>
-                          </td>
-                          <td><button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#Modifier_Modal">Modifier</button> </td>
-                          <input     type ="hidden" name="Cin" value="<?PHP  echo $row ['Cin'] ?> ">
-                          <form  method="POST" action="../Core/Supprimer_Employe.php">
-                          <td><button type="submit" class="btn btn-light btn-sm" >Supprimer</button> </td>
-                          <input     type ="hidden" name="Cin" value="<?PHP  echo $row ['Cin'] ?> ">
-                          </form>
-                        </tr>
-                        <tr>
-                        <?php }?>    
+                            <td>
+                              <?php echo $row['Cin']  ?>
+                            </td>
+                            <td>
+                              <?php echo $row['Nom'] ?>
+                            </td>
+                            <td>
+                              <?php echo $row['Prenom'] ?>
+                            </td>
+
+                            <td class="text-primary">
+                              <?php echo $row['Salaire'] . ' dt' ?>
+                            </td>
+                            <td><button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#Modifier_Modal">Modifier</button> </td>
+                            <input type="hidden" name="Cin" value="<?PHP echo $row['Cin'] ?> ">
+                            <form method="POST" action="../Core/Supprimer_Employe.php">
+                              <td><button type="submit" class="btn btn-light btn-sm">Supprimer</button> </td>
+                              <input type="hidden" name="Cin" value="<?PHP echo $row['Cin'] ?> ">
+                            </form>
+                          </tr>
+                          <tr>
+                          <?php } ?>
                       </tbody>
-                       
+
                     </table>
 
 
-<!-- Modal Ajouter -->
-<div class="modal fade" id="Ajouter_Modal" tabindex="-1" role="dialog"  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content"  >
-      <div class="modal-header">
-          
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       
-      <form method="POST" action="../Core/AjouterEmploye.php"> 
-      <div class="form-row">
-    <div class="form-group col-md-6 " >
-      <label style="color:white" >Nom</label>
-      <input type="text" name="Nom" class="form-control"  >
-    </div>
-    <div class="form-group col-md-6">
-      <label  style="color:white" >Prenom</label>
-      <input type="text" name="Prenom" class="form-control"  >
-    </div>
-  </div>
-  <div class="form-group">
-    <label  style="color:white" >Cin</label>
-    <input type="number" name="Cin" class="form-control"   >
-  </div>
-  <div class="form-group">
-    <label  style="color:white" >Salaire</label>
-    <input type="number" name="Salaire" class="form-control"   >
-  </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Fermer</button>
-        
-        <button type="Submit" class="btn btn-primary">Ajouter</button>
-        </form>
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Modifier -->
-<div class="modal fade" id="Modifier_Modal" tabindex="-1" role="dialog"  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content"  >
-      <div class="modal-header">
-          
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       
-      <form name="Form_Modifier" method="POST" action="../Core/Modifier_Employe.php"> 
-      <div class="form-row">
-    <div class="form-group col-md-6 " >
-      <label style="color:white" >Nom</label>
-      <input type="text" name="Nom" class="form-control"  >
-    </div>
-    <div class="form-group col-md-6">
-      <label  style="color:white" >Prenom</label>
-      <input type="text" name="Prenom" class="form-control"  >
-    </div>
-  </div>
-  <div class="form-group">
-    <label  style="color:white" >Cin</label>
-    <input type="number" name="Cin" class="form-control"   >
-  </div>
-  <div class="form-group">
-    <label  style="color:white" >Salaire</label>
-    <input type="number" name="Salaire" class="form-control"   >
-  </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Fermer</button>
-        
-        <button type="Submit" class="btn btn-primary" onclick="Test()">Sauvegarder</button>
-        </form>
-      </div>
-  </div>
-</div>
+                    <!-- Modal Ajouter -->
+                    <div class="modal fade" id="Ajouter_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
 
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
 
+                            <form method="POST" action="../Core/AjouterEmploye.php">
+                              <div class="form-row">
+                                <div class="form-group col-md-6 ">
+                                  <label style="color:white">Nom</label>
+                                  <input type="text" name="Nom" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label style="color:white">Prenom</label>
+                                  <input type="text" name="Prenom" class="form-control">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label style="color:white">Cin</label>
+                                <input type="number" name="Cin" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label style="color:white">Salaire</label>
+                                <input type="number" name="Salaire" class="form-control">
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Fermer</button>
+
+                                <button type="Submit" class="btn btn-primary">Ajouter</button>
+                              </div>
+                          </div>
+                        </div>
+                        </form>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-12">
-              <div class="card card-plain">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title mt-0"> Table on Plain Background</h4>
-                  <p class="card-category"> Here is a subtitle for this table</p>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead class="">
-                        <th>
-                          ID
-                        </th>
-                        <th>
-                          Name
-                        </th>
-                        <th>
-                          Country
-                        </th>
-                        <th>
-                          City
-                        </th>
-                        <th>
-                          Salary
-                        </th>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            1
-                          </td>
-                          <td>
-                            Dakota Rice
-                          </td>
-                          <td>
-                            Niger
-                          </td>
-                          <td>
-                            Oud-Turnhout
-                          </td>
-                          <td>
-                            $36,738
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            2
-                          </td>
-                          <td>
-                            Minerva Hooper
-                          </td>
-                          <td>
-                            Curaçao
-                          </td>
-                          <td>
-                            Sinaai-Waas
-                          </td>
-                          <td>
-                            $23,789
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            3
-                          </td>
-                          <td>
-                            Sage Rodriguez
-                          </td>
-                          <td>
-                            Netherlands
-                          </td>
-                          <td>
-                            Baileux
-                          </td>
-                          <td>
-                            $56,142
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            4
-                          </td>
-                          <td>
-                            Philip Chaney
-                          </td>
-                          <td>
-                            Korea, South
-                          </td>
-                          <td>
-                            Overland Park
-                          </td>
-                          <td>
-                            $38,735
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            5
-                          </td>
-                          <td>
-                            Doris Greene
-                          </td>
-                          <td>
-                            Malawi
-                          </td>
-                          <td>
-                            Feldkirchen in Kärnten
-                          </td>
-                          <td>
-                            $63,542
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            6
-                          </td>
-                          <td>
-                            Mason Porter
-                          </td>
-                          <td>
-                            Chile
-                          </td>
-                          <td>
-                            Gloucester
-                          </td>
-                          <td>
-                            $78,615
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+              <!-- Modal Modifier -->
+              <div class="modal fade" id="Modifier_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+
+                      <form name="Form_Modifier" method="POST" action="../Core/Modifier_Employe.php">
+                        <div class="form-row">
+                          <div class="form-group col-md-6 ">
+                            <label style="color:white">Nom</label>
+                            <input type="text" name="Nom" class="form-control">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label style="color:white">Prenom</label>
+                            <input type="text" name="Prenom" class="form-control">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label style="color:white">Cin</label>
+                          <input type="number" name="Cin" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label style="color:white">Salaire</label>
+                          <input type="number" name="Salaire" class="form-control">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Fermer</button>
+
+                          <button type="Submit" class="btn btn-primary" onclick="Test()">Sauvegarder</button>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
+
+
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <footer class="footer">
-        <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="https://creative-tim.com/presentation">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="https://www.creative-tim.com/license">
-                  Licenses
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright float-right" id="date">
-            , made with <i class="material-icons">favorite</i> by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+        <div class="col-md-12">
+          <div class="card card-plain">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title mt-0"> Liste des Produits</h4>
+              <p class="card-category"> </p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive" style="text-align: center">
+                <table class="table table-hover">
+                  <thead>
+                    <th>
+                      ID
+                    </th>
+                    <th>
+                      Libellé
+                    </th>
+                    <th>
+                      Prix
+                    </th>
+                    <th>
+                      Catégorie
+                    </th>
+                    <th>
+                      check
+                    </th>
+                  </thead>
+                  <tbody>
+                    <form method="POST" action="../Core/Reduction.php">
+
+                      <?PHP
+
+                      $sql = 'select * from produit order by Id_Produit ASC';
+                      $db = config::getConnexion();
+                      $Liste_Produits = $db->query($sql);
+
+
+                      foreach ($Liste_Produits as $row) {
+
+                        ?>
+                        <tr>
+                          <td> <?php echo $row['Id_Produit'] ?> </td>
+                          <td> <?php echo $row['Nom'] ?> </td>
+                          <td> <?php echo $row['Prix'] . " dt" ?> </td>
+                          <td> <?php echo $row['Categorie'] ?> </td>
+                          <td>
+                            <?php
+                              echo ('
+                             <div class="form-group">
+       <input class="form-control" type="checkbox" value="' . $row['Id_Produit'] . '" name="Check[]"/>
+                            </div>');
+                              ?>
+                          </td>
+
+                        </tr>
+                      <?php }; ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="5">
+                        <div class="form-group">
+                          <input class="form-control" name="Promos" type="number" placeholder="Entrer la valeur de promos">
+                      </td>
+              </div>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-group">
+                    <input class="form-control" name="Name" type="text">
+                </td>
+            </div>
+            </tr>
+            <tr>
+              <td colspan="5"><input type="Submit" value="Appliquer"></td>
+            </tr>
+
+            </form>
+            </tfoot>
+            </table>
           </div>
         </div>
-      </footer>
-      <script>
-        const x = new Date().getFullYear();
-        let date = document.getElementById('date');
-        date.innerHTML = '&copy; ' + x + date.innerHTML;
-      </script>
+      </div>
     </div>
+  </div>
+  </div>
+  </div>
+  <footer class="footer">
+
+
+
+
+
+
+
+
+  </footer>
+  <script>
+    const x = new Date().getFullYear();
+    let date = document.getElementById('date');
+    date.innerHTML = '&copy; ' + x + date.innerHTML;
+  </script>
+  </div>
   </div>
   <div class="fixed-plugin">
     <div class="dropdown show-dropdown">
@@ -757,15 +685,13 @@ $Liste_Employes =$EmployeC->Afficher_Employe();
   </script>
 
 
-<script>  
- 
- var table = $('#mydatatable').DataTable();
-  
- // #myInput is a <input type="text"> element
- $('#Searchbox').on( 'keyup', function () {
-     table.search( this.value ).draw();
- } );
-     
+  <script>
+    var table = $('#mydatatable').DataTable();
+
+    // #myInput is a <input type="text"> element
+    $('#Searchbox').on('keyup', function() {
+      table.search(this.value).draw();
+    });
   </script>
 
 
