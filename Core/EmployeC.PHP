@@ -4,7 +4,7 @@ include "../config.PHP";
 
 class EmployeC
 {
-
+ 
     function Afficher_Employe ()
 
     {
@@ -41,7 +41,7 @@ try {
        
 
         $req->execute();
-
+        
 }catch (Exception $e)
 {
     echo "Erreur ".$e->getMessage();
@@ -74,8 +74,7 @@ try {
 
     function Modifier_Employe($Employe)
     {
-                
-            
+       
 
 
 
@@ -83,7 +82,20 @@ try {
     }
 
 
+    function Afficher_Employe_ByCin ($Cin)
 
+    {
+    $sql ='SELECT * FROM employe where Cin='.$Cin;
+    $db=config::getConnexion();
+    try {
+        
+        $liste=$db->query ($sql);
+        return $liste;
+
+    }   catch (Exception $e) {
+die ('Erreur' .$e->getMessage());
+    }
+    }
 
 
 

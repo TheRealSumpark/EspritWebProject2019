@@ -33,9 +33,9 @@
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Login</h2>
-                    <form method="POST" action="../../Core/Connexion.php">
+                    <form method="POST" onsubmit="return Login_Checker()" action="../../Core/Connexion.php">
                         <div class="input-group">
-                            <input class="input--style-3" type="email" placeholder="Email" name="Email">
+                            <input class="input--style-3 is-valid" type="email" placeholder="Email" name="Email">
                         </div>
                         <div class="input-group">
                             <input class="input--style-3" type="text" placeholder="Mot de passe" name="Mdp">

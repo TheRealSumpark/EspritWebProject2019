@@ -13,10 +13,11 @@ $db = config::getConnexion();
 if (!empty($_POST['Email']) && !empty($_POST['Mdp']))
 {
     
-    $sql='select Role from client where  Email="'.$_POST['Email'].'" && Mdp="'.$_POST['Mdp'].'"';
-     
-    $Access=$db->query($sql)->fetch();
-    var_dump($Access);
+    $sql='select Statu from client where  Email="'.$_POST['Email'].'" && Pwd="'.$_POST['Mdp'].'"';
+    try 
+    {$Access=$db->query($sql)->fetch();}
+
+    catch(PDOException $e){ echo $e->getMessage();}
     if ($Access)
     {
 
@@ -29,7 +30,7 @@ if (!empty($_POST['Email']) && !empty($_POST['Mdp']))
         var_dump($_Session['Role']);
         if ($_SESSION['Role']==0)
         {
-            header("location:../examples/icons.html");
+            header("location:../coffe/en/index.html");
         }
         else if ($_SESSION['Role']==1)
             {
@@ -51,7 +52,7 @@ else {
  
 else { 
       echo "Les variables du formulaire ne sont pas déclarées.<br> Vous devez remplir le formulaire"; 
-     ?> <a href="auth.html">Retour au formulaire</a>	 <?php 
+     ?> <a href="Login.html">Retour au formulaire</a>	 <?php 
 }  
 
 ?> 

@@ -11,6 +11,11 @@ require '../Addons/PHPMailer/src/SMTP.php';
 
 require '../config.php';
 
+var_dump($_FILES['Mail_File']);
+
+
+
+
 
 if (!empty($_POST['Mail_Body']) && !empty($_POST['Mail_Title']))
 {
@@ -28,7 +33,19 @@ if (!empty($_POST['Mail_Body']) && !empty($_POST['Mail_Title']))
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = $_POST['Mail_Title'];
     $mail->Body    = $_POST['Mail_Body'];
+    if (isset($_FILES['Mail_File']['name']) && $_FILES['Mail_File']['name']!="")
+    {$file="attachment/".basename($_FILES['Mail_File']['name']);
+    move_uploaded_file($_FILES['Mail_File']['tmp_name'],$file);
+    var_dump($file);
+    var_dump($_FILES['Mail_File']['name']);
+    $mail->addEmbeddedImage($file,'logoimg',$_FILES['Mail_File']['name']);
+    $mail->Body .= "<p><img src='cid:logoimg' /></p>";
+   
+  }
 
+
+ 
+   
 
    
     $sql='select Email from client where Newsletter=1';
@@ -50,20 +67,21 @@ if (!empty($_POST['Mail_Body']) && !empty($_POST['Mail_Title']))
      $mail->addAddress($row['Email']); 
      
      var_dump($row['Email']);
-    
+     /* 
 if(!$mail->Send()) {
     $error = 'Mail error: '.$mail->ErrorInfo;
      
-} 
+}   */
 }
+if (isset($_FILES['Mail_File']['name']) && $_FILES['Mail_File']['name']!="")
+{unlink($file);}
 }
 
 
-echo("<script> document.location='../View/Newsletter_Mail' </script>");
+ //echo("<script> document.location='../View/Newsletter_Mail' </script>");
 
 
  
-
 
 
 

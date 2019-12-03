@@ -10,10 +10,12 @@ class Client
    private  $Gender;
    private  $Date_Naissance;
    private  $Role;
+   private  $Phone;
+   private  $Newsletter;
+   private  $Pwd;
 
 
-
-   function __construct($Nom ,$Prenom,  $Cin, $Email, $Gender, $Date_Naissance, $Role)
+   function __construct($Nom ,$Prenom,  $Cin, $Email, $Gender, $Date_Naissance,$Phone, $Role,$Newsletter,$Pwd)
    { 
     $this->Nom=$Nom;
     $this->Prenom=$Prenom;
@@ -22,6 +24,9 @@ class Client
     $this->Gender=$Gender;
     $this->Role=$Role;
     $this->Date_Naissance=$Date_Naissance;
+    $this->Phone=$Phone;
+    $this->Newsletter=$Newsletter;
+    $this->Pwd=$Pwd;
 }
 
 
@@ -33,14 +38,18 @@ function getPrenom()
 {return $this->Prenom;}
 function getGender()
 {return $this->Gender;}
-function getDate_Naisance()
+function getDate_Naissance()
 {return $this->Date_Naissance;}
 function getEmail()
 {return $this->Email;}
 function getRole()
 {return $this->Role;}
-
-
+function getPhone()
+{return $this->Phone;}
+function getNewsletter()
+{return $this->Newsletter;}
+function getPwd()
+{return $this->Pwd;}
 
 
 
@@ -59,7 +68,10 @@ function setEmail($Email)
 {return $this->Email=$Email;}
 function setRole($Role)
 {return $this->Role=$Role;}
-
+function setPhone($Phone)
+{return $this->Phone=$Phone;}
+function setPwd($Pwd)
+{return $this->Pwd=$Pwd;}
 
 
 
