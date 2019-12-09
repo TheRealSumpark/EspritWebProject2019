@@ -34,15 +34,15 @@ if (!empty($_POST['Email']) && !empty($_POST['Mdp']))
         }
         else if ($_SESSION['Role']==1)
             {
-                header("location:../Tables/tables.php");
+                header("location:../View/Tables.php");
             }
 
     }
 
 else {
     { 
-        // Le visiteur n'a pas été reconnu comme étant membre de notre site. On utilise alors un petit javascript lui signalant ce fait
-       // echo '<body onLoad="alert(\'Membre non reconnu...\')">'; 
+          echo ("Le visiteur n'a pas été reconnu comme étant membre de notre site. ");
+        echo '<body onLoad="alert(\'Membre non reconnu...\')">'; 
         // puis on le redirige vers la page d'accueil
         //echo '<meta http-equiv="refresh" content="0;URL=.html">'; 
      } 

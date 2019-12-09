@@ -7,7 +7,7 @@ include '../core/EmployeC.PHP';
 
 
 
-$EmployeC =new EmployeC();
+$EmployeC = new EmployeC();
 $Liste_Employes = $EmployeC->Afficher_Employe();
 ?>
 <!DOCTYPE html>
@@ -41,9 +41,9 @@ $Liste_Employes = $EmployeC->Afficher_Employe();
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
   <!--My CSS JS -->
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
   <link rel="stylesheet" type="text/css" href="../View/style.css" />
-  
+
   <!-- CSS   FOR DATA TABLES-->
 
 </head>
@@ -173,354 +173,363 @@ $Liste_Employes = $EmployeC->Afficher_Employe();
         </div>
       </nav>
 
-       
+
       <!-- End Navbar -->
       <div class="row" style="margin-top: 90px">
-            <div class="col-md-12">
-            
-      <div id="accordion">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#Employe" aria-expanded="false" aria-controls="collapseOne">
-          Employés
-        </button>
-      </h5>
-    </div>
-    <div id="Employe" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-   
+        <div class="col-md-12">
 
-      <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title ">Liste Des Employes</h4>
-                  <div class="form-group"> <input type="text" id="Searchbox" placeholder="Search"> </div>
-                </div>
-
-                <div class="card-body">
-
-                  <div class="table-responsive ">
-                    <table class="table table-striped " id="mydatatable">
-                      <thead class=" text-primary">
-                        <th>
-                          Cin
-                        </th>
-                        <th>
-                          Nom
-                        </th>
-                        <th>
-                          Prenom
-                        </th>
-
-                        <th>
-                          Salaire
-                        </th>
-                        <th>
-
-                          <button type="button" class="btn btn-default btn-sm " aria-label="Left Align" data-toggle="modal" data-target="#Ajouter_Modal">
-                            <i class="fa fa-plus"></i>
-                          </button>
-
-                        </th>
+          <div id="accordion">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#Employe" aria-expanded="false" aria-controls="collapseOne">
+                    Employés
+                  </button>
+                </h5>
+              </div>
+              <div id="Employe" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
 
 
-                      </thead>
-                      <tbody>
-
-                        <?php
-                        foreach ($Liste_Employes as $row) { ?>
-
-                          <tr>
-                            <td>
-                              <?php echo $row['Cin']  ?>
-                            </td>
-                            <td>
-                              <?php echo $row['Nom'] ?>
-                            </td>
-                            <td>
-                              <?php echo $row['Prenom'] ?>
-                            </td>
-
-                            <td class="text-primary">
-                              <?php echo $row['Salaire'] . ' dt' ?>
-                            </td>
-                            <td><button id="<?php echo $row['Cin']  ?>" type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#Modifier_Modal">Modifier</button> </td>
-                            <input type="hidden" name="Cin" value="<?PHP echo $row['Cin'] ?> ">
-                            <form method="POST" action="../Core/Supprimer_Employe.php">
-                              <td><button type="submit" class="btn btn-light btn-sm">Supprimer</button> </td>
-                              <input type="hidden" name="Cin" value="<?PHP echo $row['Cin'] ?> ">
-                            </form>
-                          </tr>
-                          <tr>
-                          <?php } ?>
-                      </tbody>
-
-                    </table>
-
-
-                    <script>
-                      $(document).ready(function() {
-                        $(".test").click(function() {
-                          var user_id = $(this).attr("id");
-                          $.ajax({
-                            url: "../Core/Modifier_Employe.php",
-                            method: "post",
-                            data: {
-                              user_id: user_id
-                            },
-                            success: function(data) {
-                              $('#user_detail').html(data);
-                              $('#Modifier_Modal').modal("show");
-                            }
-                          });
-                        });
-                      });
-                    </script>
-
-
-                    <script>
-                      $('.openBtn').on('click', function() {
-                        $('.modal-body').load('getContent.php?id=2', function() {
-                          $('#Modifier_Modal').modal({
-                            show: true
-                          });
-                        });
-                      });
-                    </script>
-
-
-
-                    <!-- Modal Ajouter -->
-                    <div class="modal fade" id="Ajouter_Modal" tabindex="-1" role="dialog" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
+                <div class="content">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="card">
+                          <div class="card-header card-header-primary">
+                            <h4 class="card-title ">Liste Des Employes</h4>
+                            
                           </div>
-                          <div class="modal-body">
 
-                            <form method="POST" action="../Core/AjouterEmploye.php">
-                              <div class="form-row">
-                                <div class="form-group col-md-6 ">
-                                  <label style="color:white">Nom</label>
-                                  <input type="text" name="Nom" class="form-control">
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label style="color:white">Prenom</label>
-                                  <input type="text" name="Prenom" class="form-control">
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label style="color:white">Cin</label>
-                                <input type="number" name="Cin" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                <label style="color:white">Salaire</label>
-                                <input type="number" name="Salaire" class="form-control">
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Fermer</button>
+                          <div class="card-body">
 
-                                <button type="Submit" class="btn btn-primary">Ajouter</button>
+                            <div class="table-responsive ">
+                              <table class="table " id="Table_Employe">
+                                <thead class=" text-primary">
+                                  <th>
+                                    Cin
+                                  </th>
+                                  <th>
+                                    Nom
+                                  </th>
+                                  <th>
+                                    Prenom
+                                  </th>
+
+                                  <th>
+                                    Salaire
+                                  </th>
+                                  <th>
+
+                                    <button type="button" class="btn btn-default btn-sm " aria-label="Left Align" data-toggle="modal" data-target="#Ajouter_Modal">
+                                      <i class="fa fa-plus"></i>
+                                    </button>
+
+                                  </th>
+
+
+                                </thead>
+                                <div class="form-group"> <input type="text" id="Searchbox" placeholder="Search by Cin"> </div>
+                                <tbody>
+
+                                  <?php
+                                  foreach ($Liste_Employes as $row) { ?>
+
+                                    <tr>
+                                      <td>
+                                        <?php echo $row['Cin']  ?>
+                                      </td>
+                                      <td>
+                                        <?php echo $row['Nom'] ?>
+                                      </td>
+                                      <td>
+                                        <?php echo $row['Prenom'] ?>
+                                      </td>
+
+                                      <td class="text-primary">
+                                        <?php echo $row['Salaire'] . ' dt' ?>
+                                      </td>
+                                      <td><button data-val="<?php echo $row['Cin']  ?>" data-nom="<?php echo $row['Nom']  ?>" data-prenom="<?php echo $row['Prenom']  ?>" data-salaire="<?php echo $row['Salaire']  ?>" type="button" class=" btn btn-dark btn-sm" data-toggle="modal" data-target="#Modifier_Modal">Modifier</button> </td>
+                                      <input type="hidden" name="Cin" value="<?PHP echo $row['Cin'] ?> ">
+                                      <form method="POST" action="../Core/Supprimer_Employe.php">
+                                        <td><button type="submit" class="btn btn-light btn-sm">Supprimer</button> </td>
+                                        <input type="hidden" name="Cin" value="<?PHP echo $row['Cin'] ?> ">
+                                      </form>
+                                    </tr>
+                                    <tr>
+                                    <?php } ?>
+                                </tbody>
+
+                              </table>
+
+                              <script>
+                                $(function() {
+                                  $('#Modifier_Modal').on('show.bs.modal', function(event) {
+                                    var button = $(event.relatedTarget); // Button that triggered the modal
+                                    var Cin = button.data('val');
+                                    var Nom = button.data('nom');
+                                    var Prenom = button.data('prenom');
+                                    var Salaire = button.data('salaire');
+                                    var modal = $(this);
+                                    modal.find('#cin').val(Cin);
+                                    modal.find('#Nom').val(Nom);
+                                    modal.find('#Prenom').val(Prenom);
+                                    modal.find('#Salaire').val(Salaire);
+                                    modal.find('#Cin').val(Cin);
+                                  });
+                                });
+                              </script>
+<script> 
+            $(document).ready(function() { 
+                $("#Searchbox").on("keyup", function() { 
+                    var value = $(this).val(); 
+                    $("#Table_Employe tr").filter(function() { 
+                        $(this).toggle($(this).text() 
+                        .indexOf(value) > -1) 
+                    }); 
+                }); 
+            }); 
+        </script> 
+<script> 
+            $(document).ready(function() { 
+                $("#Searchbox_1").on("keyup", function() { 
+                    var value = $(this).val(); 
+                    $("#Table_Produit tr").filter(function() { 
+                        $(this).toggle($(this).text() 
+                        .indexOf(value) > -1) 
+                    }); 
+                }); 
+            }); 
+        </script> 
+                              <!-- Modal Ajouter -->
+                              <div class="modal fade" id="Ajouter_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                      <form method="POST" action="../Core/AjouterEmploye.php">
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6 ">
+                                            <label style="color:white">Nom</label>
+                                            <input type="text" name="Nom" class="form-control">
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label style="color:white">Prenom</label>
+                                            <input type="text" name="Prenom" class="form-control">
+                                          </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <label style="color:white">Cin</label>
+                                          <input type="number" name="Cin" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                          <label style="color:white">Salaire</label>
+                                          <input type="number" name="Salaire" class="form-control">
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Fermer</button>
+
+                                          <button type="Submit" class="btn btn-primary">Ajouter</button>
+                                        </div>
+                                    </div>
+                                  </div>
+                                  </form>
+                                </div>
                               </div>
+                            </div>
                           </div>
                         </div>
-                        </form>
+                        <!-- Modal Modifier -->
+                        <div class="modal fade" id="Modifier_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+
+                                <form name="Form_Modifier" method="POST" action="../Core/Modifier_Employe.php">
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6 ">
+                                      <label style="color:white">Nom</label>
+                                      <input type="text" name="Nom" id="Nom" value="" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label style="color:white">Prenom</label>
+                                      <input type="text" name="Prenom" id="Prenom" class="form-control">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label style="color:white">Cin</label>
+                                    <input disabled type="number" name="cin" id="cin" value="" class="form-control">
+                                    <input hidden type="number" name="Cin" id="Cin" value="" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label style="color:white">Salaire</label>
+                                    <input type="number" name="Salaire" id="Salaire" class="form-control">
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Fermer</button>
+
+                                    <button type="Submit" class="btn btn-primary" onclick="Test()">Sauvegarder</button>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+
+
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <!-- Modal Modifier -->
-              <div class="modal fade" id="Modifier_Modal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-
-                      <form name="Form_Modifier" method="POST" action="../Core/Modifier_Employe.php">
-                        <div class="form-row">
-                          <div class="form-group col-md-6 ">
-                            <label style="color:white">Nom</label>
-                            <input type="text" name="Nom" class="form-control">
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label style="color:white">Prenom</label>
-                            <input type="text" name="Prenom" class="form-control">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label style="color:white">Cin</label>
-                          <input disabled type="number" name="Cin" class="form-control">
-                        </div>
-                        <div class="form-group">
-                          <label style="color:white">Salaire</label>
-                          <input type="number" name="Salaire" class="form-control">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Fermer</button>
-
-                          <button type="Submit" class="btn btn-primary" onclick="Test()">Sauvegarder</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-
-
-              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-        <!-- Collapse Begin-->
-        <div id="accordion">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#Produit" aria-expanded="true" aria-controls="collapseOne">
-          Produits
-        </button>
-      </h5>
-    </div>
-    <div id="Produit" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+          <!-- Collapse Begin-->
+          <div id="accordion">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#Produit" aria-expanded="true" aria-controls="collapseOne">
+                    Produits
+                  </button>
+                </h5>
+              </div>
+              <div id="Produit" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
 
-        <div class="col-md-12">
-          <div class="card card-plain">
-            <div class="card-header card-header-primary">
-              <h4 class="card-title mt-0"> Liste des Produits</h4>
-              <p class="card-category"> </p>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive" style="text-align: center">
-                <table class="table table-hover">
-                  <thead>
-                    <th>
-                      ID
-                    </th>
-                    <th>
-                      Libellé
-                    </th>
-                    <th>
-                      Prix_initial
-                    </th>
-                    <th>
-                      Prix_reduction
-                    </th>
-                    <th>
-                      Catégorie
-                    </th>
-                    <th>
-                      Dt Debut Promos
-                    </th>
-                    <th>
-                      Dt Fin Promos
-                    </th>
-                    <th>
-                      Check
-                    </th>
-                  </thead>
-                  <tbody>
-                    
-                    <form name="f" method="POST" onsubmit=" return Promos_Checker()"  action="../Core/Reduction.php" >
+                <div class="col-md-12">
+                  <div class="card card-plain">
+                    <div class="card-header card-header-primary">
+                      <h4 class="card-title mt-0"> Liste des Produits</h4>
+                      <p class="card-category"> </p>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-hover">
+                          <thead>
+                            <th>
+                              ID
+                            </th>
+                            <th>
+                              Libellé
+                            </th>
+                            <th>
+                              Prix_initial
+                            </th>
+                            <th>
+                              Prix_reduction
+                            </th>
+                            <th>
+                              Catégorie
+                            </th>
+                            <th>
+                              Dt Debut Promos
+                            </th>
+                            <th>
+                              Dt Fin Promos
+                            </th>
+                            <th>
+                              Check
+                            </th>
+                          </thead>
+                          <div class="form-group"> <input type="text" id="Searchbox_1" placeholder="Search by ID"> </div>
+                          <tbody id="Table_Produit">
 
-                      <?PHP
+                            <form name="f" method="POST" onsubmit=" return Promos_Checker()" action="../Core/Reduction.php">
 
-                      $sql = 'select * from produit order by Id_Produit ASC';
-                      $db = config::getConnexion();
-                      $Liste_Produits = $db->query($sql);
+                              <?PHP
+
+                              $sql = 'select * from produit order by Id_Produit ASC';
+                              $db = config::getConnexion();
+                              $Liste_Produits = $db->query($sql);
 
 
-                      foreach ($Liste_Produits as $row) {
+                              foreach ($Liste_Produits as $row) {
 
-                        ?>
-                        <tr>
-                          <td> <?php echo $row['Id_Produit'] ?> </td>
-                          <td> <?php echo $row['Nom'] ?> </td>
-                          <td> <?php echo $row['Prix'] . " dt" ?> </td>
-                          <td> <?php if ($row['Prix_Reduction']) {
-                                    echo $row['Prix_Reduction'] . " dt";
-                                  } else {
-                                    echo "N/A";
-                                  } ?> </td>
-                          <td> <?php echo $row['Categorie'] ?> </td>
-                          <td> <?php if ($row['Promos']) {
-                                    echo $row['Debut_Promos'];
-                                  } else {
-                                    echo "N/A";
-                                  } ?> </td>
-                          <td> <?php if ($row['Promos']) {
-                                    echo $row['Fin_Promos'];
-                                  } else {
-                                    echo "N/A";
-                                  } ?> </td>
-                          <td>
-                            <?php
-                              echo ('
+                                ?>
+                                <tr>
+                                  <td> <?php echo $row['Id_Produit'] ?> </td>
+                                  <td> <?php echo $row['Nom'] ?> </td>
+                                  <td> <?php echo $row['Prix'] . " dt" ?> </td>
+                                  <td> <?php if ($row['Prix_Reduction']) {
+                                            echo $row['Prix_Reduction'] . " dt";
+                                          } else {
+                                            echo "N/A";
+                                          } ?> </td>
+                                  <td> <?php echo $row['Categorie'] ?> </td>
+                                  <td> <?php if ($row['Promos']) {
+                                            echo $row['Debut_Promos'];
+                                          } else {
+                                            echo "N/A";
+                                          } ?> </td>
+                                  <td> <?php if ($row['Promos']) {
+                                            echo $row['Fin_Promos'];
+                                          } else {
+                                            echo "N/A";
+                                          } ?> </td>
+                                  <td>
+                                    <?php
+                                      echo ('
                              <div class="form-group">
        <input class="form-control" type="checkbox" value="' . $row['Id_Produit'] . '" name="Check[]"/>
                             </div>');
-                              ?>
-                          </td>
+                                      ?>
+                                  </td>
 
-                        </tr>
-                      <?php }; ?>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <td colspan="7">
-                        <div class="form-group">
-                          <input class="form-control" id="Promos" name="Promos" type="number" placeholder="Entrer la valeur de promos">
-                      </td>
+                                </tr>
+                              <?php }; ?>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td colspan="7">
+                                <div class="form-group">
+                                  <input class="form-control" id="Promos" name="Promos" type="number" placeholder="Entrer la valeur de promos">
+                              </td>
+                      </div>
+                      </tr>
+                      <tr>
+                        <td colspan="3">
+                          <div class="form-group">
+                            Date Debut<input class="form-control" type="datetime-local" id="Debut_Promos" name="Debut_Promos">
+                        </td>
+                    </div>
+                    <td colspan="3">
+                      <div class="form-group">
+                        Date Fin <input class="form-control" type="datetime-local" id="Fin_Promos" name="Fin_Promos">
+
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <input class="btn" type="Submit" onclick="Afficher()" name="Appliquer" value="Appliquer">
+                      </div>
+                    </td>
+                    </tr>
+
+                    </form>
+                    </tfoot>
+
+                    </table>
+
+
+                  </div>
+                </div>
               </div>
-              </tr>
-              <tr>
-                <td colspan="3">
-                  <div class="form-group">
-                    Date Debut<input class="form-control" type="datetime-local" id="Debut_Promos" name="Debut_Promos">
-                </td>
+
             </div>
-            <td colspan="3">
-              <div class="form-group">
-                Date Fin <input class="form-control" type="datetime-local" id="Fin_Promos" name="Fin_Promos">
-
-              </div>
-            </td>
-            <td>
-              <div>
-                <input class="btn" type="Submit" onclick="Afficher()" name="Appliquer" value="Appliquer">
-              </div>
-            </td>
-            </tr>
-
-            </form>
-            </tfoot>
-
-            </table>
-
-
           </div>
         </div>
       </div>
-
-        </div>
-                                </div>
-      </div>
-    </div>
 
       <!-- Collapse End-->
     </div>
@@ -794,14 +803,7 @@ $Liste_Employes = $EmployeC->Afficher_Employe();
   </script>
 
 
-  <script>
-    var table = $('#mydatatable').DataTable();
-
-    // #myInput is a <input type="text"> element
-    $('#Searchbox').on('keyup', function() {
-      table.search(this.value).draw();
-    });
-  </script>
+  
 
 
 

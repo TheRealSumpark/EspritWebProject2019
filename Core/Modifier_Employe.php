@@ -5,8 +5,9 @@ include "../Entities/Employe.PHP";
 
 
 $EmployeC=new EmployeC();
-$Employe=$EmployeC->Afficher_Employe_ByCin($_POST['Cin']);
-
+$Employe=new Employe($_POST['Cin'],$_POST['Nom'],$_POST['Prenom'],$_POST['Salaire']);
+$EmployeC->Modifier_Employe($Employe);
+echo "<script type='text/javascript'>  document.location='../View/Tables.php'; </script>";
 
 
 

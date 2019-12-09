@@ -21,7 +21,7 @@ function Promos_Checker()
    
     var dt_d =window.document.getElementById('Debut_Promos').value;
     var dt_f =window.document.getElementById('Fin_Promos').value;
-    alert(dt_d);
+     
     if (!dt_d)
     {
         alert("Veuillez Saisir date debut promos");
@@ -32,9 +32,16 @@ function Promos_Checker()
         verif=1;
     }
     var d=new Date();
-    d=d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()+"T"+d.getHours()+":"+d.getMinutes();
-    alert(d);
+    d=d.getFullYear()+"-"+setMonth(d.getMonth(),0)+"-"+("0" + d.getDate()).slice(-2)+"-"+d.getHours()+":"+d.getMinutes();
+    alert(d.toISOString());
     alert(dt_f);
+    if ( Date.parse(dt_f) <=  Date.parse(d)   )
+    {
+        alert( "La date de livraison doit être supérieure a la date d'aujourd'hui ");
+       verif=1;
+    }
+
+
     if (dt_f<d)
     {alert("Date de fin de promos doit etre superieure a la date actuelle");
 verif=1;}

@@ -44,4 +44,4 @@ if (empty($_POST['Promos']))
 
 
 
- //echo ("<script> document.location='../Tables/tables.php' </script>");
+ echo ("<script> document.location='../View/Tables.php' </script>");

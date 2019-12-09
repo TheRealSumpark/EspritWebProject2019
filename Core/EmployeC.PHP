@@ -75,30 +75,21 @@ try {
     function Modifier_Employe($Employe)
     {
        
-
-
-
+            $sql="Update employe set Nom=:Nom , Prenom=:Prenom ,Salaire=:Salaire  where Cin=:Cin";
+            $db=config::getConnexion();
+            $req=$db->prepare($sql);
+           try{
+            $req->bindvalue(':Cin',$Employe->getCin());
+            $req->bindvalue(':Nom',$Employe->getNom());
+            $req->bindvalue(':Prenom',$Employe->getPrenom());
+            $req->bindvalue(':Salaire',$Employe->getSalaire());
+            $req->execute();}
+            catch( PDOException $e)
+            { echo $e->getMessage();}
 
     }
 
-
-    function Afficher_Employe_ByCin ($Cin)
-
-    {
-    $sql ='SELECT * FROM employe where Cin='.$Cin;
-    $db=config::getConnexion();
-    try {
-        
-        $liste=$db->query ($sql);
-        return $liste;
-
-    }   catch (Exception $e) {
-die ('Erreur' .$e->getMessage());
-    }
-    }
-
-
-
+ 
 }
 
 
