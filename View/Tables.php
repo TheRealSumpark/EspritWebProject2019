@@ -197,7 +197,7 @@ $Liste_Employes = $EmployeC->Afficher_Employe();
                         <div class="card">
                           <div class="card-header card-header-primary">
                             <h4 class="card-title ">Liste Des Employes</h4>
-                            
+
                           </div>
 
                           <div class="card-body">
@@ -278,28 +278,28 @@ $Liste_Employes = $EmployeC->Afficher_Employe();
                                   });
                                 });
                               </script>
-<script> 
-            $(document).ready(function() { 
-                $("#Searchbox").on("keyup", function() { 
-                    var value = $(this).val(); 
-                    $("#Table_Employe tr").filter(function() { 
-                        $(this).toggle($(this).text() 
-                        .indexOf(value) > -1) 
-                    }); 
-                }); 
-            }); 
-        </script> 
-<script> 
-            $(document).ready(function() { 
-                $("#Searchbox_1").on("keyup", function() { 
-                    var value = $(this).val(); 
-                    $("#Table_Produit tr").filter(function() { 
-                        $(this).toggle($(this).text() 
-                        .indexOf(value) > -1) 
-                    }); 
-                }); 
-            }); 
-        </script> 
+                              <script>
+                                $(document).ready(function() {
+                                  $("#Searchbox").on("keyup", function() {
+                                    var value = $(this).val();
+                                    $("#Table_Employe tr").filter(function() {
+                                      $(this).toggle($(this).text()
+                                        .indexOf(value) > -1)
+                                    });
+                                  });
+                                });
+                              </script>
+                              <script>
+                                $(document).ready(function() {
+                                  $("#Searchbox_1").on("keyup", function() {
+                                    var value = $(this).val();
+                                    $("#Table_Produit tr").filter(function() {
+                                      $(this).toggle($(this).text()
+                                        .indexOf(value) > -1)
+                                    });
+                                  });
+                                });
+                              </script>
                               <!-- Modal Ajouter -->
                               <div class="modal fade" id="Ajouter_Modal" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -532,18 +532,206 @@ $Liste_Employes = $EmployeC->Afficher_Employe();
       </div>
 
       <!-- Collapse End-->
+
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#Desk" aria-expanded="true" aria-controls="collapseOne">
+                Desk
+              </button>
+            </h5>
+          </div>
+          <div id="Desk" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+
+            <div class="col-md-12">
+              <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title mt-0"> Desk</h4>
+                  <p class="card-category"> </p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <td>cin</td>
+                        <td>nom</td>
+                        <td>phone</td>
+                        <td>time</td>
+
+                        <td>Supprimer</td>
+                        <td>Modifier</td>
+                      </thead>
+                      <div class="form-group"> <input type="text" id="Searchbox_2" placeholder="Search by Cin"> </div>
+                      <tbody id="Table_Desk">
+
+                        <?php
+                        foreach ($Liste_tables as $row) {
+                          ?>
+                          <tr>
+                            <td> <?PHP echo $row['cin'];   ?></td>
+                            <td> <?PHP echo $row['nom'];   ?></td>
+                            <td> <?PHP echo $row['phone'];   ?></td>
+                            <td> <?PHP echo $row['time'];   ?></td>
+
+
+                            <td>
+                              <form method="POST" action="../core/Supprimer_table.PHP">
+                                <input type="hidden" name="nom" value="<?PHP echo $row['nom'] ?> ">
+                                <input type="submit" name="submit" value="Supprimer">
+
+                              </form>
+                            </td>
+                            <td> <a href="modifierEmploye.php?nom=<?PHP echo $row['nom']; ?>"> Modifier </a> </td>
+
+
+
+                          </tr>
+
+                        <?PHP
+                        }
+                        ?>
+                      </tbody>
+
+                      </tfoot>
+
+                    </table>
+                    <script>
+                      $(document).ready(function() {
+                        $("#Searchbox_2").on("keyup", function() {
+                          var value = $(this).val();
+                          $("#Table_Desk tr").filter(function() {
+                            $(this).toggle($(this).text()
+                              .indexOf(value) > -1)
+                          });
+                        });
+                      });
+                    </script>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+     
+
+
+    <!--  BEGIN Event -->
+    <div id="accordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#Event" aria-expanded="true" aria-controls="collapseOne">
+              Event
+            </button>
+          </h5>
+        </div>
+        <div id="Event" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+
+          <div class="col-md-12">
+            <div class="card card-plain">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title mt-0"> Event</h4>
+                <p class="card-category"> </p>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <td>id</td>
+                      <td>cin</td>
+                      <td>nom</td>
+                      <td>type</td>
+                      <td>date</td>
+                      <td>time</td>
+                      <td>prix</td>
+                      <td>statut</td>
+                      <td>phone</td>
+
+                      <td>Supprimer</td>
+                      <td>Modifier</td>
+                    </thead>
+                    <div class="form-group"> <input type="text" id="Searchbox_3" placeholder="Search by Id"> </div>
+                    <tbody id="Table_Event">
+
+                      <?php
+                      foreach ($Liste_events as $row) {
+                        ?>
+                        <tr>
+                          <td> <?PHP echo $row['id'];   ?></td>
+                          <td> <?PHP echo $row['cin'];   ?></td>
+                          <td> <?PHP echo $row['nom'];   ?></td>
+                          <td> <?PHP echo $row['type'];   ?></td>
+                          <td> <?PHP echo $row['date'];   ?></td>
+                          <td> <?PHP echo $row['time'];   ?></td>
+                          <td> <?PHP echo $row['prix'];   ?></td>
+                          <td> <?PHP echo $row['statut'];   ?></td>
+                          <td> <?PHP echo $row['phone'];   ?></td>
+
+                          <td>
+                            <form method="POST" action="../core/Supprimer_event.PHP">
+                              <input type="hidden" name="nom" value="<?PHP echo $row['nom'] ?> ">
+                              <input type="submit" name="submit" value="Supprimer">
+
+                            </form>
+                          </td>
+                          <td> <a href="modifierEmploye.php?nom=<?PHP echo $row['nom']; ?>"> Modifier </a> </td>
+
+
+
+                        </tr>
+
+                      <?PHP
+                      }
+                      ?>
+                    </tbody>
+
+
+
+                  </table>
+                  <script>
+                    $(document).ready(function() {
+                      $("#Searchbox_3").on("keyup", function() {
+                        var value = $(this).val();
+                        $("#Table_Event tr").filter(function() {
+                          $(this).toggle($(this).text()
+                            .indexOf(value) > -1)
+                        });
+                      });
+                    });
+                  </script>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
+
+
   </div>
   </div>
   </div>
+  </div>
+
+
+  <!-- END EVENT   -->
+
+
+
+
+
+
+
+
   <footer class="footer">
-
-
-
-
-
-
-
 
   </footer>
   <script>
@@ -803,7 +991,7 @@ $Liste_Employes = $EmployeC->Afficher_Employe();
   </script>
 
 
-  
+
 
 
 
